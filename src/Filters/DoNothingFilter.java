@@ -9,6 +9,7 @@ public class DoNothingFilter implements PixelFilter {
     public DImage processImage(DImage img) {
         // we don't change the input image at all!
         return img;
+        //My comment
     }
 }
 
