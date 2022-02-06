@@ -3,6 +3,8 @@ package Filters;
 import Interfaces.PixelFilter;
 import core.DImage;
 
+import java.util.ArrayList;
+
 public class AdvancedAnswerFilter implements PixelFilter {
     short grid[][];
 
@@ -21,5 +23,28 @@ public class AdvancedAnswerFilter implements PixelFilter {
             }
         }
         return answerGrid;
+    }
+
+    public void analyzeQuestion(short[][] answerGrid,int startingX, int startingY){
+        for(int i = startingX; i < startingX + 225; i++){
+            for(int j = startingY; j < startingY + 20; j++){
+
+            }
+        }
+    }
+
+    public ArrayList<Answer> getAnswerList(){
+        ArrayList<Answer> answerList = new ArrayList<>();
+        return answerList;
+    }
+}
+
+class Answer{
+    private boolean correct;
+    private String filledInAnswer;
+
+    public Answer(boolean correct, String filledInAnswer){
+        this.correct = correct;
+        this.filledInAnswer = filledInAnswer;
     }
 }
