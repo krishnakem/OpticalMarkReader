@@ -10,11 +10,11 @@ import java.util.ArrayList;
 public class ScoresCSVWriter {
 
     Scores student;
-    ArrayList<String> answerSheet;
+    ArrayList<String> answers;
 
-    public ScoresCSVWriter(Scores student, ArrayList<String> answerSheet){
+    public ScoresCSVWriter(Scores student, ArrayList<String> answers){
         this.student = student;
-        this.answerSheet = answerSheet;
+        this.answers = answers;
     }
 
     public void csvWriter(){
@@ -23,7 +23,7 @@ public class ScoresCSVWriter {
             writer = new PrintWriter(new File(student.getStudentID() + "_answers.csv"));
             StringBuffer csvHeader = new StringBuffer("");
             StringBuffer csvData = new StringBuffer("");
-            csvHeader.append("Question, Student's Answer, Correct\n");
+            csvHeader.append("Question #, Student's Answer, Correct\n");
             writer.write(csvHeader.toString());
 
             int counter = 0;
@@ -33,7 +33,7 @@ public class ScoresCSVWriter {
                 csvData.append(",");
                 csvData.append(student.getAnswers().get(i));
                 csvData.append(",");
-                if(student.getAnswers().get(i).equals(answerSheet.get(i))){
+                if(student.getAnswers().get(i).equals(answers.get(i))){
                     csvData.append("Correct");
                     counter++;
                 }
@@ -41,7 +41,7 @@ public class ScoresCSVWriter {
             }
             csvData.append("Total Right : ");
             csvData.append(",");
-            csvData.append(counter + " / " + answerSheet.size());
+            csvData.append(counter + " / " + answers.size());
             writer.write(csvData.toString());
             writer.close();
         }
