@@ -49,5 +49,4 @@ public class ScoresCSVWriter {
             e.printStackTrace();
         }
     }
-
 }
