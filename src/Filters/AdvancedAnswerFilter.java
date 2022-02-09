@@ -27,8 +27,8 @@ public class AdvancedAnswerFilter implements PixelFilter {
         return result;
     }
 
-    public int getIDNumber(short[][] grid){
-        return 0;
+    public String getIDNumber(short[][] grid){
+        return null;
     }
 
     public ArrayList<String> analyzeBars(short[][] grid){

@@ -3,15 +3,15 @@ package core;
 import java.util.ArrayList;
 
 public class Scores {
-    private int studentID;
+    private String studentID;
     private ArrayList<String> answers;
 
-    public Scores(int studentID, ArrayList<String> answers){
+    public Scores(String studentID, ArrayList<String> answers){
         this.studentID = studentID;
         this.answers = answers;
     }
 
-    public int getStudentID(){
+    public String getStudentID(){
         return studentID;
     }
 
