@@ -18,7 +18,7 @@ public class OpticalMarkReaderMain {
         FilterTest getPages = new FilterTest();
         AdvancedAnswerFilter filter = new AdvancedAnswerFilter();
 
-        ArrayList<String> answers = new ArrayList<String>;
+        ArrayList<String> answers = new ArrayList<String>();
         answers.add("A");
         answers.add("B");
 
@@ -30,7 +30,7 @@ public class OpticalMarkReaderMain {
             classScores.add(filter.getAnswers());
         }
 
-        for(int i = 0; i < classScores.size()){
+        for(int i = 0; i < classScores.size(); i++){
             ScoresCSVWriter firstWriter = new ScoresCSVWriter(classScores.get(i), answers);
             firstWriter.csvWriter();
         }
