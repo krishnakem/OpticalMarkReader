@@ -40,8 +40,8 @@ public class FilterTest {
 
     private static void SaveAndDisplayExample() {
         PImage img = PDFHelper.getPageImage("assets/scantron_sample.pdf",1);
-        img.save(currentFolder + "assets/scantron_sample.pdf.tif");
+        img.save(currentFolder + "assets/scantron_sample.png");
 
-        DisplayWindow.showFor("assets/scantron_sample.pdf.tif");
+        DisplayWindow.showFor("assets/scantron_sample.png");
     }
 }

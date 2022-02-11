@@ -58,6 +58,7 @@ public class AdvancedAnswerFilter implements PixelFilter {
     public String findIDNumber(short[][] grid){
         short[][] output = new short[236][236];
 
+        //grid of only the ID # boxes
         for (int r = 680; r < 916; r++) {
             for (int c = 428; c < 664; c++) {
                 output[r-680][c-428] = grid[r][c];
