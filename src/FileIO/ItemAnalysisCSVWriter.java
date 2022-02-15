@@ -32,7 +32,7 @@ public class ItemAnalysisCSVWriter {
                 int counter = 0;
                 for(int j = 0; j < classData.size(); j++){
                     ArrayList<String> currentIndexStudent = classData.get(j).getAnswers();
-                    if(!currentIndexStudent.get(j).equals(answerSheet.get(j))){
+                    if(!currentIndexStudent.get(i).equals(answerSheet.get(i))){
                         counter++;
                     }
                 }
