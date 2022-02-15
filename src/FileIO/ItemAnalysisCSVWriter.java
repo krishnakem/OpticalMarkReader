@@ -32,11 +32,11 @@ public class ItemAnalysisCSVWriter {
                 int counter = 0;
                 for(int j = 0; j < classData.size(); j++){
                     ArrayList<String> currentIndexStudent = classData.get(j).getAnswers();
-                    if(!currentIndexStudent.get(i).equals(answerSheet.get(i))){
+                    if(!currentIndexStudent.get(j).equals(answerSheet.get(j))){
                         counter++;
                     }
                 }
-                csvData.append(counter);
+                csvData.append(counter+ "\n");
             }
 
             writer.write(csvData.toString());

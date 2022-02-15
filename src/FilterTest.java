@@ -28,10 +28,10 @@ public class FilterTest {
                                    // the information you want
     }
 
-    public ArrayList<DImage> getDImages(int numPages){
+    public static ArrayList<DImage> getDImages(int numPages){
         ArrayList<DImage> pages = new ArrayList<DImage>();
-        for(int i = 1; i <= numPages; i++){
-            PImage in = PDFHelper.getPageImage("assets/scantron_sample.pdf", i);
+        for(int i = 0; i < numPages; i++){
+            PImage in = PDFHelper.getPageImage("assets/scantron_sample1.pdf", i);
             DImage img = new DImage(in);
             pages.add(img);
         }
@@ -39,7 +39,7 @@ public class FilterTest {
     }
 
     private static void SaveAndDisplayExample() {
-        PImage img = PDFHelper.getPageImage("assets/scantron_sample.pdf",1);
+        PImage img = PDFHelper.getPageImage("assets/scantron_sample.png",1);
         img.save(currentFolder + "assets/scantron_sample.png");
 
         DisplayWindow.showFor("assets/scantron_sample.png");

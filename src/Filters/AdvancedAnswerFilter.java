@@ -23,22 +23,28 @@ public class AdvancedAnswerFilter implements PixelFilter {
     }
 
     public Scores getAnswers(){
-        Scores result = new Scores(getIDNumber(grid), analyzeBars(grid));
+        Scores result = new Scores(getIDNumber(grid), totalAnswer(numberBox(grid)));
         return result;
     }
 
-    public ArrayList<String> analyzeBars(short[][] grid){
-        ArrayList<String> answers = new ArrayList<String>();
-        for(int i = 0; i < answers.size(); i+=2){
-            answers.add(i,findLeftAnswer(grid).get(i));
+    //Finds the grid of only the black boxes and the questions (both the left and right side bubbles)
+    public short[][] numberBox(short[][] grid){
+        if(grid == null) return null;
+        short[][] output1 = new short[1200][356];
+
+        for (int r = 111; r < 1311; r++) {
+            for (int c = 18; c < 374; c++) {
+                output1[r-111][c-18] = grid[r][c];
+            }
         }
-        for(int i = 1; i < answers.size(); i+=2){
-            answers.add(i,findRightAnswer(grid).get(i));
-        }
-        return answers;
+
+        return output1;
     }
 
-    private ArrayList<String> findLeftAnswer(short[][] grid) {
+
+
+    //Uses the grid and finds the black bars that correspond to the left side of bubbles
+    public ArrayList<String> answerLeftBubble(short[][] grid){
         ArrayList<String> answers = new ArrayList<>();
         if(grid == null) return null;
         int counterA, counterB, counterC, counterD, counterE;
@@ -99,7 +105,9 @@ public class AdvancedAnswerFilter implements PixelFilter {
         return answers;
     }
 
-    private ArrayList<String> findRightAnswer(short[][] grid) {
+
+    //Uses the grid and finds the black bars that correspond to the right side of bubbles
+    public ArrayList<String> answerRightBubble(short[][] grid){
         if(grid == null) return null;
         ArrayList<String> answers = new ArrayList<>();
         int counterA, counterB, counterC, counterD, counterE;
@@ -158,6 +166,20 @@ public class AdvancedAnswerFilter implements PixelFilter {
             }
         }
         return answers;
+    }
+
+    public ArrayList<String> totalAnswer(short[][] grid){
+        ArrayList<String> leftAns = answerLeftBubble(grid);
+        ArrayList<String> rightAns = answerRightBubble(grid);
+        ArrayList<String> totalAnswers = new ArrayList<>();
+        for (int i = 0; i < leftAns.size(); i++) {
+            totalAnswers.add(leftAns.get(i));
+        }
+        for (int i = 0; i < rightAns.size(); i++) {
+            totalAnswers.add(rightAns.get(i));
+        }
+
+        return totalAnswers;
     }
 
 
@@ -282,3 +304,4 @@ public class AdvancedAnswerFilter implements PixelFilter {
         return studentID;
     }
 }
+

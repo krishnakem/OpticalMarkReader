@@ -34,10 +34,10 @@ public class ScoresCSVWriter {
                 csvData.append(student.getAnswers().get(i));
                 csvData.append(",");
                 if(student.getAnswers().get(i).equals(answers.get(i))){
-                    csvData.append("Correct");
+                    csvData.append("Correct\n");
                     counter++;
                 }
-                else csvData.append("Incorrect");
+                else csvData.append("Incorrect\n");
             }
             csvData.append("Total Right : ");
             csvData.append(",");

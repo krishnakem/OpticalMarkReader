@@ -12,18 +12,21 @@ import java.util.ArrayList;
 // ANOTHER EDIT.
 public class OpticalMarkReaderMain {
     public static void main(String[] args) {
-        String pathToPdf = fileChooser();
-        System.out.println("Loading pdf at " + pathToPdf);
+        //String pathToPdf = fileChooser();
+        //System.out.println("Loading pdf at " + pathToPdf);
 
-        FilterTest getPages = new FilterTest();
+        String pathToPdf = "assets/scantron_sample1.png";
+
+       // FilterTest getPages = new FilterTest();
         AdvancedAnswerFilter filter = new AdvancedAnswerFilter();
 
         ArrayList<String> answers = new ArrayList<String>();
-        answers.add("A");
-        answers.add("B");
-        answers.add("C");
 
-        ArrayList<DImage> images = getPages.getDImages(3);
+        for(int i = 0; i < 50; i++){
+            answers.add(i,"A");
+        }
+
+        ArrayList<DImage> images = FilterTest.getDImages(3);
         ArrayList<Scores> classScores = new ArrayList<>();
 
         for(int i = 0; i < images.size(); i++){
@@ -31,13 +34,18 @@ public class OpticalMarkReaderMain {
             classScores.add(filter.getAnswers());
         }
 
-        for(int i = 0; i < classScores.size(); i++){
+        ArrayList<String > holder = classScores.get(0).getAnswers();
+        for(int i = 0; i < holder.size(); i++){
+            System.out.println(holder.get(i));
+        }
+
+       for(int i = 0; i < classScores.size(); i++){
             ScoresCSVWriter firstWriter = new ScoresCSVWriter(classScores.get(i), answers);
             firstWriter.csvWriter();
         }
 
-        ItemAnalysisCSVWriter secondWriter = new ItemAnalysisCSVWriter(classScores, answers);
-        secondWriter.csvWriter();
+       ItemAnalysisCSVWriter secondWriter = new ItemAnalysisCSVWriter(classScores, answers);
+       secondWriter.csvWriter();
     }
 
     private static String fileChooser() {
