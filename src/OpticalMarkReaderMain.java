@@ -34,10 +34,10 @@ public class OpticalMarkReaderMain {
             classScores.add(filter.getAnswers());
         }
 
-        ArrayList<String > holder = classScores.get(0).getAnswers();
-        for(int i = 0; i < holder.size(); i++){
-            System.out.println(holder.get(i));
-        }
+//        ArrayList<String > holder = classScores.get(0).getAnswers();
+//        for(int i = 0; i < holder.size(); i++){
+//            System.out.println(holder.get(i));
+//        }
 
        for(int i = 0; i < classScores.size(); i++){
             ScoresCSVWriter firstWriter = new ScoresCSVWriter(classScores.get(i), answers);

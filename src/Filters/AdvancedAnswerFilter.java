@@ -88,19 +88,18 @@ public class AdvancedAnswerFilter implements PixelFilter {
                     }
                 }
             }
-            if(counterA > counterB && counterA > counterC && counterA > counterD && counterA > counterE){
-                answers.add("A");
-            } else if(counterB > counterC && counterB > counterD && counterB > counterE){
-                answers.add("B");
-            } else if(counterC > counterD && counterC > counterE){
-                answers.add("C");
-            } else if(counterD > counterE){
-                answers.add("D");
-            } else if(counterE > counterD){
-                answers.add("E");
-            } else {
-                answers.add("BLANK");
-            }
+            if(counterA > 0 && counterB > 0 || counterA > 0 && counterC > 0 || counterA > 0 && counterD > 0 || counterA > 0 && counterE > 0) answers.add("NA");
+            else if(counterB > 0 && counterC > 0 || counterB > 0 && counterD > 0 || counterB > 0 && counterE > 0) answers.add("NULL");
+            else if(counterC > 0 && counterD > 0 || counterC > 0 && counterE > 0) answers.add("NULL");
+            else if(counterD > 0 && counterE > 0 ) answers.add("NULL");
+
+
+            if(counterA > counterB && counterA > counterC && counterA > counterD && counterA > counterE) answers.add("A");
+            else if(counterB > counterC && counterB > counterD && counterB > counterE) answers.add("B");
+            else if(counterC > counterD && counterC > counterE)answers.add("C");
+            else if(counterD > counterE)answers.add("D");
+            else if(counterE > counterD)answers.add("E");
+            else answers.add("BLANK");
         }
         return answers;
     }
@@ -151,19 +150,19 @@ public class AdvancedAnswerFilter implements PixelFilter {
                     }
                 }
             }
-            if(counterA > counterB && counterA > counterC && counterA > counterD && counterA > counterE){
-                answers.add("A");
-            } else if(counterB > counterC && counterB > counterD && counterB > counterE){
-                answers.add("B");
-            } else if(counterC > counterD && counterC > counterE){
-                answers.add("C");
-            } else if(counterD > counterE){
-                answers.add("D");
-            } else if(counterE > counterD){
-                answers.add("E");
-            } else {
-                answers.add("BLANK");
-            }
+
+            if(counterA > 0 && counterB > 0 || counterA > 0 && counterC > 0 || counterA > 0 && counterD > 0 || counterA > 0 && counterE > 0) answers.add("NA");
+            else if(counterB > 0 && counterC > 0 || counterB > 0 && counterD > 0 || counterB > 0 && counterE > 0) answers.add("NULL");
+            else if(counterC > 0 && counterD > 0 || counterC > 0 && counterE > 0) answers.add("NULL");
+            else if(counterD > 0 && counterE > 0 ) answers.add("NULL");
+
+
+            if(counterA > counterB && counterA > counterC && counterA > counterD && counterA > counterE) answers.add("A");
+            else if(counterB > counterC && counterB > counterD && counterB > counterE) answers.add("B");
+            else if(counterC > counterD && counterC > counterE)answers.add("C");
+            else if(counterD > counterE)answers.add("D");
+            else if(counterE > counterD)answers.add("E");
+            else answers.add("BLANK");
         }
         return answers;
     }
@@ -304,4 +303,3 @@ public class AdvancedAnswerFilter implements PixelFilter {
         return studentID;
     }
 }
-
