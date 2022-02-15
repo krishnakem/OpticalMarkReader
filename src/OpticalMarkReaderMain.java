@@ -21,9 +21,27 @@ public class OpticalMarkReaderMain {
         AdvancedAnswerFilter filter = new AdvancedAnswerFilter();
 
         ArrayList<String> answers = new ArrayList<String>();
-
-        for(int i = 0; i < 50; i++){
-            answers.add(i,"A");
+        answers.add("D");
+        answers.add("C");
+        answers.add("B");
+        answers.add("D");
+        answers.add("A");
+        answers.add("B");
+        answers.add("C");
+        answers.add("D");
+        answers.add("E");
+        answers.add("D");
+        answers.add("B");
+        answers.add("C");
+        answers.add("A");
+        answers.add("E");
+        answers.add("C");
+        answers.add("A");
+        answers.add("B");
+        answers.add("B");
+        answers.add("B");
+        for(int i = 19; i < 50; i++){
+            answers.add(i, "BLANK");
         }
 
         ArrayList<DImage> images = FilterTest.getDImages(3);
