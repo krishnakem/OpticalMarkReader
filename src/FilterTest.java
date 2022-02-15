@@ -13,7 +13,7 @@ public class FilterTest {
     public static void main(String[] args) {
         SaveAndDisplayExample();
 
-        RunTheFilter();
+//        RunTheFilter();
     }
 
     private static void RunTheFilter() {

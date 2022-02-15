@@ -21,6 +21,7 @@ public class OpticalMarkReaderMain {
         ArrayList<String> answers = new ArrayList<String>();
         answers.add("A");
         answers.add("B");
+        answers.add("C");
 
         ArrayList<DImage> images = getPages.getDImages(3);
         ArrayList<Scores> classScores = new ArrayList<>();

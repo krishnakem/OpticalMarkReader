@@ -29,25 +29,135 @@ public class AdvancedAnswerFilter implements PixelFilter {
 
     public ArrayList<String> analyzeBars(short[][] grid){
         ArrayList<String> answers = new ArrayList<String>();
-        for(int i = 1; i <= 25; i++){
-            for(int j = 0; j <= 48; j+=2){
-                answers.add(j, findLeftAnswer(grid, 37,45, i));
-            }
+        for(int i = 0; i < answers.size(); i+=2){
+            answers.add(i,findLeftAnswer(grid).get(i));
         }
-        for(int i = 1; i <= 25; i++){
-            for(int j = 1; j < 50; j+=2){
-                answers.add(j, findRightAnswer(grid, 37,70, i));
+        for(int i = 1; i < answers.size(); i+=2){
+            answers.add(i,findRightAnswer(grid).get(i));
+        }
+        return answers;
+    }
+
+    private ArrayList<String> findLeftAnswer(short[][] grid) {
+        ArrayList<String> answers = new ArrayList<>();
+        if(grid == null) return null;
+        int counterA, counterB, counterC, counterD, counterE;
+
+        for (int BigRow = 0; BigRow < grid.length; BigRow+=48) {
+            counterA = 0;
+            counterB = 0;
+            counterC = 0;
+            counterD = 0;
+            counterE = 0;
+
+
+            for (int r = BigRow; r < BigRow+12; r++) {
+                for (int col = 72; col < 91; col++) {
+                    if(grid[r][col] < 130){
+                        counterA++;
+                    }
+                }
+
+                for (int col = 97; col < 115; col++) {
+                    if(grid[r][col] < 130){
+                        counterB++;
+                    }
+                }
+
+                for (int col = 121; col < 139; col++) {
+                    if(grid[r][col] < 130){
+                        counterC++;
+                    }
+                }
+
+                for (int col = 146; col < 163; col++) {
+                    if(grid[r][col] < 130){
+                        counterD++;
+                    }
+                }
+
+                for (int col = 170; col < 187; col++) {
+                    if(grid[r][col] < 130){
+                        counterE++;
+                    }
+                }
+            }
+            if(counterA > counterB && counterA > counterC && counterA > counterD && counterA > counterE){
+                answers.add("A");
+            } else if(counterB > counterC && counterB > counterD && counterB > counterE){
+                answers.add("B");
+            } else if(counterC > counterD && counterC > counterE){
+                answers.add("C");
+            } else if(counterD > counterE){
+                answers.add("D");
+            } else if(counterE > counterD){
+                answers.add("E");
+            } else {
+                answers.add("BLANK");
             }
         }
         return answers;
     }
 
-    private String findLeftAnswer(short[][] grid, int x, int y, int multiplier) {
-        return null;
-    }
+    private ArrayList<String> findRightAnswer(short[][] grid) {
+        if(grid == null) return null;
+        ArrayList<String> answers = new ArrayList<>();
+        int counterA, counterB, counterC, counterD, counterE;
 
-    private String findRightAnswer(short[][] grid, int x, int y, int multiplier) {
-        return null;
+        for (int BigRow = 23; BigRow < grid.length; BigRow+=48) {
+            counterA = 0;
+            counterB = 0;
+            counterC = 0;
+            counterD = 0;
+            counterE = 0;
+
+
+            for (int r = BigRow; r < BigRow+12; r++) {
+                for (int col = 241; col < 260; col++) {
+                    if(grid[r][col] < 130){
+                        counterA++;
+                    }
+                }
+
+                for (int col = 266; col < 283; col++) {
+                    if(grid[r][col] < 130){
+                        counterB++;
+                    }
+                }
+
+                for (int col = 290; col < 308; col++) {
+                    if(grid[r][col] < 130){
+                        counterC++;
+                    }
+                }
+
+                for (int col = 314; col < 332; col++) {
+                    if(grid[r][col] < 130){
+                        counterD++;
+                    }
+                }
+
+                for (int col = 338; col < grid[0].length; col++) {
+                    if(grid[r][col] < 130){
+                        counterE++;
+                    }
+                }
+            }
+            if(counterA > counterB && counterA > counterC && counterA > counterD && counterA > counterE){
+                answers.add("A");
+            } else if(counterB > counterC && counterB > counterD && counterB > counterE){
+                answers.add("B");
+            } else if(counterC > counterD && counterC > counterE){
+                answers.add("C");
+            } else if(counterD > counterE){
+                answers.add("D");
+            } else if(counterE > counterD){
+                answers.add("E");
+            } else {
+                answers.add("BLANK");
+            }
+        }
+        return answers;
     }
 
 
