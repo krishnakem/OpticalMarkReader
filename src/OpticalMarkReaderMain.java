@@ -12,50 +12,23 @@ import java.util.ArrayList;
 // ANOTHER EDIT.
 public class OpticalMarkReaderMain {
     public static void main(String[] args) {
-        //String pathToPdf = fileChooser();
-        //System.out.println("Loading pdf at " + pathToPdf);
 
-        String pathToPdf = "assets/scantron_sample1.png";
+        String pathToPdf = JOptionPane.showInputDialog("Path to Scantron Sheets PDF : ");
 
-       // FilterTest getPages = new FilterTest();
         AdvancedAnswerFilter filter = new AdvancedAnswerFilter();
 
         ArrayList<String> answers = new ArrayList<String>();
-        answers.add("D");
-        answers.add("C");
-        answers.add("B");
-        answers.add("D");
-        answers.add("A");
-        answers.add("B");
-        answers.add("C");
-        answers.add("D");
-        answers.add("E");
-        answers.add("D");
-        answers.add("B");
-        answers.add("C");
-        answers.add("A");
-        answers.add("E");
-        answers.add("C");
-        answers.add("A");
-        answers.add("B");
-        answers.add("B");
-        answers.add("B");
-        for(int i = 19; i < 50; i++){
-            answers.add(i, "BLANK");
-        }
+        DImage answerImage = FilterTest.getAnswerKeyImage(pathToPdf);
+        filter.processImage(answerImage);
+        answers = filter.getAnswers().getAnswers();
 
-        ArrayList<DImage> images = FilterTest.getDImages(3);
+        ArrayList<DImage> images = FilterTest.getDImages(2, pathToPdf);
         ArrayList<Scores> classScores = new ArrayList<>();
 
         for(int i = 0; i < images.size(); i++){
             filter.processImage(images.get(i));
             classScores.add(filter.getAnswers());
         }
-
-//        ArrayList<String > holder = classScores.get(0).getAnswers();
-//        for(int i = 0; i < holder.size(); i++){
-//            System.out.println(holder.get(i));
-//        }
 
        for(int i = 0; i < classScores.size(); i++){
             ScoresCSVWriter firstWriter = new ScoresCSVWriter(classScores.get(i), answers);

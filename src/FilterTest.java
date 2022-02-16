@@ -28,10 +28,16 @@ public class FilterTest {
                                    // the information you want
     }
 
-    public static ArrayList<DImage> getDImages(int numPages){
+    public static DImage getAnswerKeyImage(String path){
+        PImage in = PDFHelper.getPageImage(path, 0);
+        DImage img = new DImage(in);
+        return img;
+    }
+
+    public static ArrayList<DImage> getDImages(int numPages, String path){
         ArrayList<DImage> pages = new ArrayList<DImage>();
-        for(int i = 0; i < numPages; i++){
-            PImage in = PDFHelper.getPageImage("assets/scantron_sample1.pdf", i);
+        for(int i = 1; i < numPages; i++){
+            PImage in = PDFHelper.getPageImage(path, i);
             DImage img = new DImage(in);
             pages.add(img);
         }
