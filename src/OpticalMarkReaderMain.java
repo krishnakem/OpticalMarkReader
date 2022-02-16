@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class OpticalMarkReaderMain {
     public static void main(String[] args) {
 
-        String pathToPdf = JOptionPane.showInputDialog("Path to Scantron Sheets PDF : ");
+        String pathToPdf = fileChooser();
 
         AdvancedAnswerFilter filter = new AdvancedAnswerFilter();
 
