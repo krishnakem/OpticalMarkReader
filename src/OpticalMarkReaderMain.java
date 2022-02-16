@@ -17,7 +17,6 @@ public class OpticalMarkReaderMain {
         String num = JOptionPane.showInputDialog("Enter number of pages including the Answer Key");
         int numPages = Integer.parseInt(num);
 
-
         AdvancedAnswerFilter filter = new AdvancedAnswerFilter();
 
         ArrayList<String> answers = new ArrayList<String>();
