@@ -36,8 +36,8 @@ public class FilterTest {
 
     public static ArrayList<DImage> getDImages(int numPages, String path){
         ArrayList<DImage> pages = new ArrayList<DImage>();
-        for(int i = 1; i < numPages; i++){
-            PImage in = PDFHelper.getPageImage(path, i);
+        for(int i = 0; i < numPages-1; i++){
+            PImage in = PDFHelper.getPageImage(path, i+1);
             DImage img = new DImage(in);
             pages.add(img);
         }

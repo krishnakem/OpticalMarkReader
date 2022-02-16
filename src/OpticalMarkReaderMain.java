@@ -22,7 +22,7 @@ public class OpticalMarkReaderMain {
         filter.processImage(answerImage);
         answers = filter.getAnswers().getAnswers();
 
-        ArrayList<DImage> images = FilterTest.getDImages(2, pathToPdf);
+        ArrayList<DImage> images = FilterTest.getDImages(3, pathToPdf);
         ArrayList<Scores> classScores = new ArrayList<>();
 
         for(int i = 0; i < images.size(); i++){
