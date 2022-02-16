@@ -40,7 +40,10 @@ public class ScoresCSVWriter {
                 else csvData.append("Incorrect\n");
             }
             csvData.append("Total Right : ");
-            csvData.append(counter + " / " + answers.size());
+            csvData.append(",");
+            csvData.append(counter);
+            csvData.append(",");
+            csvData.append(" / " + answers.size());
             writer.write(csvData.toString());
             writer.close();
         }
