@@ -14,6 +14,9 @@ public class OpticalMarkReaderMain {
     public static void main(String[] args) {
 
         String pathToPdf = fileChooser();
+        String num = JOptionPane.showInputDialog("Enter number of pages including the Answer Key");
+        int numPages = Integer.parseInt(num);
+
 
         AdvancedAnswerFilter filter = new AdvancedAnswerFilter();
 
@@ -22,7 +25,7 @@ public class OpticalMarkReaderMain {
         filter.processImage(answerImage);
         answers = filter.getAnswers().getAnswers();
 
-        ArrayList<DImage> images = FilterTest.getDImages(3, pathToPdf);
+        ArrayList<DImage> images = FilterTest.getDImages(numPages, pathToPdf);
         ArrayList<Scores> classScores = new ArrayList<>();
 
         for(int i = 0; i < images.size(); i++){
